@@ -2,7 +2,9 @@
 A Machine Learning model to help identify patients with Post-Acute Sequelae of SARS-CoV-2 infection (PASC) using EHR data
 
 
-METHODS
+METHODS:
+
+
 In this section, we outline the systematic approach utilized for data preprocessing, feature engineering,
 selection, and model development.
 
