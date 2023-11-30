@@ -8,7 +8,8 @@ METHODS:
 In this section, we outline the systematic approach utilized for data preprocessing, feature engineering,
 selection, and model development.
 
-Data Source
+Data Source:
+
 Data was obtained from the UI Health EHR covering a period of March, 2020 – June, 2022. Data included
 patients who had a COVID-19 diagnosis only (N = 12174), who survived at least 30 days post-COVID-19
 diagnosis. COVID-19 diagnoses was defined as patients with a positive laboratory test for COVID-19 (e.g.,
@@ -17,10 +18,10 @@ based on an IRB Exempt approval. The data was pulled for this population from th
 Research Datawarehouse (CRDW).
 
 Data Preprocessing and Engineering:
+
 Our datasets included patient demographics, diagnoses, and hospital visits, which we loaded into
 pandas DataFrames. A thorough exploratory analysis was undertaken to validate the integrity of the
-data.
-When engineering the diagnosis data, we incorporated the definition of Long COVID, which pertains to
+data. When engineering the diagnosis data, we incorporated the definition of Long COVID, which pertains to
 ongoing, relapsing, or new symptoms or conditions that manifest 30 or more days after a COVID
 infection. Consequently, we filtered out all diagnosis codes before and within 30 days of the initial
 COVID diagnosis, retaining only those that emerged post the 30-day period. This decision ensures that
@@ -38,6 +39,7 @@ predictive value, were omitted. Column names were standardized by replacing unsu
 and we ensured data type consistency by casting all features to integers.
 
 Feature Engineering and Selection:
+
 The class imbalance ratio of 600 negatives to 10 positives posed a significant challenge. To address this,
 we initially employed LightGBM, a gradient-boosting framework, to assess feature importance. The top
 500 features were selected based on their importance scores. A feature correlation analysis was then
@@ -48,6 +50,7 @@ Approach) to enhance the representation of the minority class in the training se
 model&#39;s predictive performance across classes.
 
 Model Development and Evaluation:
+
 Our primary model, a LightGBM classifier, underwent hyperparameter tuning through Bayesian
 Optimization over 50 iterations with 5-fold cross-validation, with model parameters carefully selected to
 optimize performance. A suite of ensemble models, including Gradient Boosting, Bagging Classifiers,
