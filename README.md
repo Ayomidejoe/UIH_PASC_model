@@ -2,13 +2,13 @@
 A Machine Learning model to help identify patients with Post-Acute Sequelae of SARS-CoV-2 infection (PASC) using EHR data
 
 
-METHODS:
+**METHODS:**
 
 
 In this section, we outline the systematic approach utilized for data preprocessing, feature engineering,
 selection, and model development.
 
-Data Source:
+**Data Source:**
 
 Data was obtained from the UI Health EHR covering a period of March, 2020 – June, 2022. Data included
 patients who had a COVID-19 diagnosis only (N = 12174), who survived at least 30 days post-COVID-19
@@ -17,7 +17,7 @@ positive PCR for SARS-CoV-2 or diagnosis code indicating COVID-19 diagnosis. Dat
 based on an IRB Exempt approval. The data was pulled for this population from the CCTS Clinical
 Research Datawarehouse (CRDW).
 
-Data Preprocessing and Engineering:
+**Data Preprocessing and Engineering:**
 
 Our datasets included patient demographics, diagnoses, and hospital visits, which we loaded into
 pandas DataFrames. A thorough exploratory analysis was undertaken to validate the integrity of the
@@ -38,7 +38,7 @@ essential, such as dates, ICD-10 codes (retaining the descriptive code names), a
 predictive value, were omitted. Column names were standardized by replacing unsupported characters,
 and we ensured data type consistency by casting all features to integers.
 
-Feature Engineering and Selection:
+**Feature Engineering and Selection:**
 
 The class imbalance ratio of 600 negatives to 10 positives posed a significant challenge. To address this,
 we initially employed LightGBM, a gradient-boosting framework, to assess feature importance. The top
@@ -49,7 +49,7 @@ scaling, such as SVM. Considering the substantial class imbalance, we adopted th
 Approach) to enhance the representation of the minority class in the training set, thereby improving our
 model&#39;s predictive performance across classes.
 
-Model Development and Evaluation:
+**Model Development and Evaluation:**
 
 Our primary model, a LightGBM classifier, underwent hyperparameter tuning through Bayesian
 Optimization over 50 iterations with 5-fold cross-validation, with model parameters carefully selected to
