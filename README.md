@@ -1,8 +1,11 @@
 # UIH_PASC_model
 A Machine Learning model to help identify patients with Post-Acute Sequelae of SARS-CoV-2 infection (PASC) using EHR data
+
+
 METHODS
 In this section, we outline the systematic approach utilized for data preprocessing, feature engineering,
 selection, and model development.
+
 Data Source
 Data was obtained from the UI Health EHR covering a period of March, 2020 – June, 2022. Data included
 patients who had a COVID-19 diagnosis only (N = 12174), who survived at least 30 days post-COVID-19
@@ -31,17 +34,17 @@ diagnosis DataFrame, coding absent labels as zero to denote negative cases. Colu
 essential, such as dates, ICD-10 codes (retaining the descriptive code names), and others without
 predictive value, were omitted. Column names were standardized by replacing unsupported characters,
 and we ensured data type consistency by casting all features to integers.
+
 Feature Engineering and Selection:
 The class imbalance ratio of 600 negatives to 10 positives posed a significant challenge. To address this,
 we initially employed LightGBM, a gradient-boosting framework, to assess feature importance. The top
 500 features were selected based on their importance scores. A feature correlation analysis was then
 conducted, removing features with a correlation above 0.7 to mitigate multicollinearity. The
 StandardScaler was applied to normalize the feature space, crucial for models sensitive to feature
-scaling, such as SVM.
-
-Considering the substantial class imbalance, we adopted the ADASYN (Adaptive Synthetic Sampling
+scaling, such as SVM. Considering the substantial class imbalance, we adopted the ADASYN (Adaptive Synthetic Sampling
 Approach) to enhance the representation of the minority class in the training set, thereby improving our
 model&#39;s predictive performance across classes.
+
 Model Development and Evaluation:
 Our primary model, a LightGBM classifier, underwent hyperparameter tuning through Bayesian
 Optimization over 50 iterations with 5-fold cross-validation, with model parameters carefully selected to
